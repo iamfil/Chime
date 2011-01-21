@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Chime
+ * 
+ * Copyright (C) 2011 ZeroBits LLC
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+-->
+<PreferenceScreen
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:title="Chime Settings">
+	<PreferenceCategory
+		android:title="Startup Chime">
+		<CheckBoxPreference
+			android:title="Play"
+			android:key="boot_enabled"
+			android:summary="Play a sound during startup"
+			android:defaultValue="false"></CheckBoxPreference>
+		<RingtonePreference
+			android:title="Select Sound"
+			android:showDefault="true"
+			android:showSilent="false"
+			android:ringtoneType="notification|alarm"
+			android:key="boot_sound"
+			android:dependency="boot_enabled"
+			android:defaultValue="@string/default_notification"></RingtonePreference>
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="Shutdown Chime">
+		<CheckBoxPreference
+			android:title="Play"
+			android:key="shutdown_enabled"
+			android:summary="Play a sound during shutdown"
+			android:defaultValue="false"></CheckBoxPreference>
+		<RingtonePreference
+			android:title="Select Sound"
+			android:showDefault="true"
+			android:showSilent="false"
+			android:ringtoneType="notification|alarm"
+			android:key="shutdown_sound"
+			android:dependency="shutdown_enabled"
+			android:defaultValue="@string/default_notification"></RingtonePreference>
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="About">
+		<Preference
+			android:key="license"
+			android:title="License"></Preference>
+		<Preference
+			android:title="Version"
+			android:summary="@string/version"
+			android:enabled="false"
+			android:selectable="false"></Preference>
+	</PreferenceCategory>
+</PreferenceScreen>
