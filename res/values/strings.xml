@@ -21,7 +21,7 @@
 -->
 <resources>
 	<string
-		name="version">1.1</string>
+		name="version">1.2</string>
 	<string
 		name="default_notification">content://settings/system/notification_sound</string>
 	<string
