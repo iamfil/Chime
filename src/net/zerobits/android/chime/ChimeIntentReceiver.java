@@ -23,7 +23,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -63,9 +65,21 @@ public class ChimeIntentReceiver extends BroadcastReceiver
 	{
 		try
 		{
-			final MediaPlayer mp = MediaPlayer.create(context, Uri.parse(uri));
+			final MediaPlayer mp = new MediaPlayer();
+			mp.setDataSource(context, Uri.parse(uri));
+			mp.setAudioStreamType(AudioManager.STREAM_NOTIFICATION);
+			mp.prepare();
 			mp.setLooping(false);
 			mp.start();
+
+			mp.setOnCompletionListener(new OnCompletionListener()
+			{
+				@Override
+				public void onCompletion(final MediaPlayer mp)
+				{
+					mp.release();
+				}
+			});
 		}
 		catch (final Exception e)
 		{
